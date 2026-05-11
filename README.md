@@ -1,10 +1,10 @@
 # Cost Roll-Up Widget for Azure DevOps
 
-https://img.shields.io/visual-studio-marketplace/v/deenuy.ado-cost-rollup-widget?label=Marketplace&color=0078d4](https://marketplace.visualstudio.com/items?itemName=deenuy.ado-cost-rollup-widget)
-https://img.shields.io/github/stars/deenuy/ado-cost-rollup-widget?style=flat&color=ffd700](https://github.com/deenuy/ado-cost-rollup-widget/stargazers)
-https://github.com/deenuy/ado-cost-rollup-widget/actions/workflows/ci.yml/badge.svg?branch=main](https://github.com/deenuy/ado-cost-rollup-widget/actions/workflows/ci.yml)
-https://img.shields.io/badge/License-MIT-green.svg](LICENSE.md)
-https://img.shields.io/badge/PRs-welcome-brightgreen.svg](CONTRIBUTING.md)
+[![VS Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/deenuy.ado-cost-rollup-widget?label=Marketplace&color=0078d4)](https://marketplace.visualstudio.com/items?itemName=deenuy.ado-cost-rollup-widget)
+[![GitHub Stars](https://img.shields.io/github/stars/deenuy/ado-cost-rollup-widget?style=flat&color=ffd700)](https://github.com/deenuy/ado-cost-rollup-widget/stargazers)
+[![Build](https://github.com/deenuy/ado-cost-rollup-widget/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/deenuy/ado-cost-rollup-widget/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 A lightweight Azure DevOps dashboard widget that aggregates work items by any groupable field and sums any numeric field — rendered as formatted currency (`$2K`, `€1.5M`, `₹245K`). Designed for IT portfolio managers, PMOs, and engineering leaders who need financial roll-ups without leaving the dashboard.
 
