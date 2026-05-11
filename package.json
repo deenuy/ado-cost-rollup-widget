@@ -1,6 +1,6 @@
 {
   "name": "ado-cost-rollup-widget",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Azure DevOps dashboard widget that aggregates work items by any field and sums a numeric field as currency.",
   "author": "Deenu Gengiti",

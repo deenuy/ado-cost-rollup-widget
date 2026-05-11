@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "ado-cost-rollup-widget",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "ADO Cost Roll-Up Widget",
   "publisher": "deenuy",
   "description": "Dashboard widget that aggregates work items by any string-like field and sums a numeric field as formatted currency.",
@@ -59,11 +59,25 @@
           { "rowSpan": 2, "columnSpan": 2 },
           { "rowSpan": 2, "columnSpan": 3 },
           { "rowSpan": 2, "columnSpan": 4 },
+          { "rowSpan": 2, "columnSpan": 5 },
+          { "rowSpan": 2, "columnSpan": 6 },
+          { "rowSpan": 2, "columnSpan": 7 },
           { "rowSpan": 3, "columnSpan": 3 },
           { "rowSpan": 3, "columnSpan": 4 },
           { "rowSpan": 3, "columnSpan": 5 },
+          { "rowSpan": 3, "columnSpan": 6 },
+          { "rowSpan": 3, "columnSpan": 7 },
+          { "rowSpan": 3, "columnSpan": 5 },
           { "rowSpan": 4, "columnSpan": 4 },
           { "rowSpan": 4, "columnSpan": 5 }
+          { "rowSpan": 4, "columnSpan": 6 },
+          { "rowSpan": 4, "columnSpan": 7 },
+          { "rowSpan": 5, "columnSpan": 5 },
+          { "rowSpan": 5, "columnSpan": 6 },
+          { "rowSpan": 5, "columnSpan": 7 },
+          { "rowSpan": 6, "columnSpan": 6 },
+          { "rowSpan": 6, "columnSpan": 7 },
+          { "rowSpan": 7, "columnSpan": 7 }
         ],
         "supportedScopes": ["project_team"]
       }

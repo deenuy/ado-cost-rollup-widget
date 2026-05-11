@@ -89,6 +89,7 @@ export class CostRollUpWidget {
         const $foot  = document.getElementById("hint")  as HTMLElement;
 
         const grandSum   = all.reduce((a, b) => a + b.sum, 0);
+        const grandAbs   = all.reduce((a, b) => a + Math.abs(b.sum), 0);   // sum of magnitudes
         const grandCount = all.reduce((a, b) => a + b.count, 0);
 
         const fmt = (n: number) => formatCurrency(n, s.currency, s.style as FormatStyle);
@@ -97,14 +98,14 @@ export class CostRollUpWidget {
             <thead>
               <tr>
                 <th class="col-group">${escapeHtml(s.groupByLabel || "Group")}</th>
-                <th class="col-count">Items</th>
+                <th class="col-count">Projects</th>
                 <th class="col-sum">${escapeHtml(s.aggregateLabel || "Total")}</th>
                 <th class="col-pct">%</th>
               </tr>
             </thead>
             <tbody>`;
         rows.forEach(r => {
-            const pct = grandSum > 0 ? Math.round((r.sum / grandSum) * 100) : 0;
+            const pct = grandAbs > 0 ? Math.round((Math.abs(r.sum) / grandAbs) * 100) : 0;
             html += `<tr>
                 <td class="col-group" title="${escapeHtml(r.key)}">${escapeHtml(r.key)}</td>
                 <td class="col-count">${r.count}</td>
