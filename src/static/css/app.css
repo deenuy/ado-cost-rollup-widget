@@ -1,0 +1,244 @@
+/* =====================================================================
+   ADO Cost Roll-Up Widget — styles aligned to Azure DevOps Fluent UI
+   ===================================================================== */
+
+:root {
+    --bg:            #fff;
+    --fg:            #201F1E;
+    --fg-strong:     #11100F;
+    --muted:         #605E5C;
+    --border:        #EDEBE9;
+    --border-strong: #C8C6C4;
+    --accent:        #0078D4;
+    --accent-hover:  #106EBE;
+    --accent-focus:  rgba(0, 120, 212, 0.30);
+    --error:         #A4262C;
+    --row-hover:     #F3F2F1;
+    --font:          "Segoe UI Variable Display","Segoe UI",
+    -apple-system,BlinkMacSystemFont,
+    "Helvetica Neue",Arial,sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg:            #252423;
+        --fg:            #F3F2F1;
+        --fg-strong:     #FFFFFF;
+        --muted:         #C8C6C4;
+        --border:        #3B3A39;
+        --border-strong: #605E5C;
+        --row-hover:     #2D2C2B;
+    }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font);
+    color: var(--fg);
+    background: transparent;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =====================================================================
+   Widget tile
+   ===================================================================== */
+
+.widget {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--bg);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.title-header {
+    flex: 0 0 auto;
+    padding: 14px 16px 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--fg-strong);
+    line-height: 1.2;
+}
+
+.panel {
+    flex: 1 1 auto;
+    overflow: auto;
+}
+
+.msg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    height: 100%;
+}
+
+.msg.error { color: var(--error); }
+
+/* =====================================================================
+   Roll-up table
+   ===================================================================== */
+
+.table-wrap {
+    padding: 0 16px 12px;
+}
+
+.rollup-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+}
+
+.rollup-table th {
+    text-align: left;
+    padding: 8px 12px 6px 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+.rollup-table td {
+    padding: 8px 12px 8px 0;
+    color: var(--fg);
+    border-bottom: 1px solid var(--border);
+}
+
+.rollup-table tbody tr:hover {
+    background: var(--row-hover);
+}
+
+.rollup-table tfoot td {
+    padding-top: 10px;
+    border-top: 2px solid var(--border-strong);
+    border-bottom: none;
+    color: var(--fg-strong);
+    font-weight: 600;
+}
+
+.col-count, .col-sum, .col-pct {
+    text-align: right;
+    white-space: nowrap;
+    padding-right: 0;
+}
+
+.col-group {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 0;
+    width: 100%;
+}
+
+.empty {
+    padding: 32px 16px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.hint {
+    margin: 8px 16px 12px;
+    padding: 6px 10px;
+    background: var(--row-hover);
+    color: var(--muted);
+    font-size: 12px;
+    border-radius: 2px;
+    border-left: 2px solid var(--border-strong);
+}
+
+/* =====================================================================
+   Configuration pane
+   ===================================================================== */
+
+.config {
+    padding: 4px;
+    font-family: var(--font);
+    color: var(--fg);
+    font-size: 14px;
+}
+
+.config .row {
+    margin-bottom: 16px;
+}
+
+.config .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.config .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+}
+
+.config label {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--fg);
+    margin-bottom: 4px;
+}
+
+.config .req {
+    color: var(--error);
+    margin-left: 2px;
+}
+
+.config select,
+.config input {
+    width: 100%;
+    height: 32px;
+    padding: 0 8px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--fg);
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: 2px;
+    box-sizing: border-box;
+    transition: border-color 120ms ease;
+}
+
+.config select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 28px;
+    background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+    background-position: calc(100% - 14px) center, calc(100% - 9px) center;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+}
+
+.config select:hover,
+.config input:hover {
+    border-color: var(--fg);
+}
+
+.config select:focus,
+.config input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+}
+
+.config select:disabled,
+.config input:disabled {
+    background: var(--row-hover);
+    color: var(--muted);
+    cursor: not-allowed;
+    border-color: var(--border);
+}

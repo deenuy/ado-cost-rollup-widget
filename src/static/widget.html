@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Cost Roll-Up</title>
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+
+<body>
+<div class="widget">
+    <div class="title-header"></div>
+
+    <div id="content" class="panel" style="display:none">
+        <div class="table-wrap">
+            <table id="table" class="rollup-table"></table>
+        </div>
+    </div>
+
+    <p id="hint" class="hint" hidden></p>
+
+    <div id="loading" class="panel msg" style="display:none">Loading…</div>
+    <div id="configure" class="panel msg" style="display:none">
+        Configure the widget to pick a query and fields.
+    </div>
+    <div id="error" class="panel msg error" style="display:none">
+        Couldn't load the query. Check your access and configuration.
+    </div>
+</div>
+
+<script src="../lib/VSS.SDK.min.js"></script>
+<script>
+    VSS.init({
+        explicitNotifyLoaded: true,
+        usePlatformStyles:    true,
+        usePlatformScripts:   true,
+        setupModuleLoader:    true
+    });
+    VSS.ready(function () {
+        VSS.require(
+            ["dist/widget"],
+            function () {},
+            function (err) {
+                console.error("Failed to load widget bundle:", err);
+                VSS.notifyLoadFailed(String(err));
+            }
+        );
+    });
+</script>
+</body>
+
+</html>

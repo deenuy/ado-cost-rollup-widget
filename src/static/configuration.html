@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Cost Roll-Up Configuration</title>
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+
+<body>
+<div class="config">
+
+    <div class="row">
+        <label for="query">Query <span class="req">*</span></label>
+        <select id="query"></select>
+    </div>
+
+    <div class="row two-col">
+        <div>
+            <label for="group-by">Group by <span class="req">*</span></label>
+            <select id="group-by" disabled>
+                <option>Pick a query first…</option>
+            </select>
+        </div>
+        <div>
+            <label for="group-label">Column header</label>
+            <input id="group-label" type="text" placeholder="Group" />
+        </div>
+    </div>
+
+    <div class="row two-col">
+        <div>
+            <label for="aggregate">Aggregate <span class="req">*</span></label>
+            <select id="aggregate" disabled>
+                <option>Pick a query first…</option>
+            </select>
+            <p id="agg-hint" class="hint" hidden>
+                Add an integer/decimal column to your query to enable aggregation.
+            </p>
+        </div>
+        <div>
+            <label for="agg-label">Column header</label>
+            <input id="agg-label" type="text" placeholder="Total" />
+        </div>
+    </div>
+
+    <div class="row three-col">
+        <div>
+            <label for="currency">Currency</label>
+            <select id="currency"></select>
+        </div>
+        <div>
+            <label for="style">Format</label>
+            <select id="style">
+                <option value="compact">Compact ($2K)</option>
+                <option value="full">Full ($2,000)</option>
+            </select>
+        </div>
+        <div>
+            <label for="max-rows">Max rows (0 = all)</label>
+            <input id="max-rows" type="number" min="0" value="0" />
+        </div>
+    </div>
+
+</div>
+
+<script src="../lib/VSS.SDK.min.js"></script>
+<script>
+    VSS.init({
+        explicitNotifyLoaded: true,
+        usePlatformStyles:    true,
+        usePlatformScripts:   true,
+        setupModuleLoader:    true
+    });
+    VSS.ready(function () {
+        VSS.require(
+            ["dist/configuration"],
+            function () {},
+            function (err) {
+                console.error("Failed to load config bundle:", err);
+                VSS.notifyLoadFailed(String(err));
+            }
+        );
+    });
+</script>
+</body>
+
+</html>
