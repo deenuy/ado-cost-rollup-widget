@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "ado-cost-rollup-widget",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "name": "ADO Cost Roll-Up Widget",
   "publisher": "deenuy",
   "description": "Dashboard widget that aggregates work items by any string-like field and sums a numeric field as formatted currency.",
