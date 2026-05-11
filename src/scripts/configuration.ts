@@ -114,8 +114,6 @@ export class Configuration {
         const project = VSS.getWebContext().project.name;
 
         try {
-            // Fetch the query (gives us columns) and the project's field list (gives us types).
-            // Cache the field-type map across query changes — fields don't change per query.
             if (this.fieldTypeMap.size === 0) {
                 const allFields = await this.client.getFields(project);
                 allFields.forEach(f => this.fieldTypeMap.set(f.referenceName, fieldTypeName(f)));
@@ -125,7 +123,7 @@ export class Configuration {
             const columns: QueryColumn[] = (q.columns || []).map(c => ({
                 referenceName: c.referenceName,
                 name: c.name,
-                type: this.fieldTypeMap.get(c.referenceName) || ""
+                type: this.fieldTypeMap.get(c.referenceName) || inferTypeFromName(c.referenceName)
             }));
 
             this.populateColumnDropdowns(columns);
@@ -228,6 +226,23 @@ function matches(type: string, allowed: string[]): boolean {
 function lookup(cols: QueryColumn[], ref: string): string {
     const c = cols.find(c => c.referenceName === ref);
     return c ? c.name : "";
+}
+
+/**
+ * Fallback type inference for synthesized fields not in the project field schema.
+ *
+ * ADO exposes "Area Level N" and "Iteration Level N" as computed query columns
+ * (projections of treePath segments). They appear in getQuery(...).columns but
+ * not in getFields(project), so the field-type map can't classify them. Treat
+ * them as string-like for group-by purposes.
+ *
+ * Returns the lowercase type name expected by the classifier, or "" if unknown.
+ */
+function inferTypeFromName(referenceName: string): string {
+    if (/^System\.(Area|Iteration)Level\d+$/i.test(referenceName)) {
+        return "string";
+    }
+    return "";
 }
 
 function blankSettings(): ISettings {
